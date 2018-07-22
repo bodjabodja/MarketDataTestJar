@@ -1,0 +1,22 @@
+group 'MarketDataTest'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task (runMain, dependsOn: 'classes', type: JavaExec) {
+    main = 'Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile fileTree(dir: 'resources', include: ['*.jar'])
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
